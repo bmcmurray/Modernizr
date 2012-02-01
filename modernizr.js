@@ -395,9 +395,12 @@ window.Modernizr = (function( window, document, undefined ) {
      *   code.google.com/p/geo-location-javascript/
      * or view a fallback solution using google's geo API:
      *   gist.github.com/366184
+     * 
+     * This used to be !!navigator.geolocation, but checking for geolocation
+     * in this manner breaks the bfcache in browsers that support it.
      */
     tests['geolocation'] = function() {
-        return !!navigator.geolocation;
+        return !!("geolocation" in navigator);
     };
 
     // Per 1.6:
